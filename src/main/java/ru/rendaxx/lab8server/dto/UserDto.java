@@ -1,4 +1,4 @@
-package ru.rendaxx.lab8server;
+package ru.rendaxx.lab8server.dto;
 
 import lombok.Value;
 

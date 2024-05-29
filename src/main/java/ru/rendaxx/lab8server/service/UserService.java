@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.rendaxx.lab8server.UserDto;
+import ru.rendaxx.lab8server.dto.UserDto;
 import ru.rendaxx.lab8server.entity.Users;
 import ru.rendaxx.lab8server.mapper.UserCreateMapper;
 import ru.rendaxx.lab8server.repository.UsersRepository;
@@ -16,7 +16,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class  UserService implements UserDetailsService {
 
     private final UsersRepository usersRepository;
     private final UserCreateMapper userCreateMapper;

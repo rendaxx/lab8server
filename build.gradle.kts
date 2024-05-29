@@ -22,6 +22,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.11.0")
     implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 //    implementation("org.springframework.boot:spring-boot-starter-data-redis")

@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import ru.rendaxx.lab8server.dto.OrganizationDto;
 
 import java.time.LocalDate;
 
@@ -16,7 +19,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "organization")
 @DynamicUpdate
-public class Organization implements BaseEntity<Long> {
+@Transactional
+public class Organization implements BaseEntity<Long>, Comparable<Organization> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,5 +64,37 @@ public class Organization implements BaseEntity<Long> {
         this.employeesCount = employeesCount;
         this.organizationType = organizationType;
         this.address = address;
+    }
+
+    public Organization(OrganizationDto org) {
+        this.id = org.getId();
+        this.name = org.getName();
+        this.coordinates = new Coordinates(org.getX(), org.getY());
+        this.localDate = org.getLocalDate();
+        this.annualTurnover = org.getAnnualTurnover();
+        this.fullName = org.getFullName();
+        this.employeesCount = org.getEmployeesCount();
+        this.organizationType = org.getOrganizationType();
+        this.address = new Address(org.getStreet(), org.getZipCode());
+    }
+
+
+    public Organization(OrganizationDto org, Users user) {
+        this.id = org.getId();
+        this.name = org.getName();
+        this.coordinates = new Coordinates(org.getX(), org.getY());
+        this.localDate = org.getLocalDate();
+        this.annualTurnover = org.getAnnualTurnover();
+        this.fullName = org.getFullName();
+        this.employeesCount = org.getEmployeesCount();
+        this.organizationType = org.getOrganizationType();
+        this.address = new Address(org.getStreet(), org.getZipCode());
+        this.creator = user;
+    }
+
+
+    @Override
+    public int compareTo(Organization o) {
+        return (int) (this.getAnnualTurnover() - o.getAnnualTurnover());
     }
 }

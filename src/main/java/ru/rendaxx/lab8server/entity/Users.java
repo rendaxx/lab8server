@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Data
 @NoArgsConstructor
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "users")
+@Transactional
 public class Users implements BaseEntity<Long> {
 
     @Id

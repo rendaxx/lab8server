@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
+import ru.rendaxx.lab8server.dto.AddressDto;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "address")
+@Transactional
 public class Address implements BaseEntity<Long> {
 
     @Id
@@ -30,5 +33,9 @@ public class Address implements BaseEntity<Long> {
     public Address(String street, String zipcode) {
         this.street = street;
         this.zipcode = zipcode;
+    }
+
+    public Address(AddressDto addressDto) {
+        this(addressDto.getStreet(), addressDto.getZipCode());
     }
 }

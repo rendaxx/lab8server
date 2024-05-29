@@ -5,4 +5,5 @@ import ru.rendaxx.lab8server.entity.Organization;
 
 
 public interface OrganizationRepository extends CrudRepository<Organization, Long> {
+
 }

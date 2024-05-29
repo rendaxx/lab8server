@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import ru.rendaxx.lab8server.UserDto;
+import ru.rendaxx.lab8server.dto.UserDto;
 import ru.rendaxx.lab8server.entity.Role;
 import ru.rendaxx.lab8server.entity.Users;
 
